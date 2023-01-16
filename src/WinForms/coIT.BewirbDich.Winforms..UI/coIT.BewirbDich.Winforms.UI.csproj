@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net7.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <UseWindowsForms>true</UseWindowsForms>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <StartupObject>coIT.BewirbDich.Winforms.UI.Program</StartupObject>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\coIT.BewirbDich..Winforms.Infrastructure\coIT.BewirbDich.Winforms.Infrastructure.csproj" />
+      <ProjectReference Include="..\coIT.BewirbDich.Winforms.Domain\coIT.BewirbDich.Winforms.Domain.csproj" />
+    </ItemGroup>
+
+</Project>
