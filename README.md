@@ -6,6 +6,8 @@ Wir wollen dir als Bewerber eine für dich zugeschnittene Aufgabe geben. Dafür 
 
 Gleichzeitig wollen wir für uns die Vergleichbarkeit von Kandidaten erhöhen, indem alle mit den gleichen Basics und der gleichen Problemdomäne arbeiten.
 
+Du kennst uns noch nicht? Dann schau dir dieses kurze Video an: [![Imagevideo co-IT.eu GmbH](https://lh3.googleusercontent.com/p/AF1QipPBchc9JesovqE4ew7mUvXwb3sj6g6yvAQa6NsW=s1360-w1360-h1020)](https://youtu.be/fpPjn58ONrI)
+
 # Beispiele
 Solche Aufgaben könnten z.B. sein:
 
