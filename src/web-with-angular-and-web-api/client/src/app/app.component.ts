@@ -38,12 +38,15 @@ export class AppComponent {
     if(this.selectedDocument) {
       this.selectedDocument.typ = Dokumententyp.VERSICHERUNGSSCHEIN;
       await this.http.patch<Dokument>(environment.baseurl + '/dokumente/' + this.selectedDocument.id, this.selectedDocument).toPromise()
+      this.selectedDocument = undefined;
       await this.ladeDokumente()
+      
     }
   }
   async selectedDocumentAusstellen() {
     if(this.selectedDocument) {
       await this.http.post<Dokument>(environment.baseurl + '/dokumente/' + this.selectedDocument.id + '/ausstellen', this.selectedDocument).toPromise()
+      this.selectedDocument = undefined;
       await this.ladeDokumente()
     }
   }
