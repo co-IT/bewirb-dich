@@ -17,7 +17,7 @@ export class AppComponent {
 
   constructor(public http: HttpClient, private eDMService: ErstelleDokumentModalService ) {
     eDMService.saved.pipe(tap(() => {
-      this.ladeDokumente
+      this.ladeDokumente()
     })).subscribe()
     this.ladeDokumente()
   }
