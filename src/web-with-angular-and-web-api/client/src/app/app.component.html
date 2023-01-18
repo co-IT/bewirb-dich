@@ -1,6 +1,6 @@
 <button (click)="openDocumentCreation()">Neu</button>
 <button (click)="selectedDocumentAnnehmen()" [disabled]="!selectedDocument || selectedDocument?.typ !=1">Annehmen</button>
-<button [disabled]="!selectedDocument ||  selectedDocument?.typ == 1 && !selectedDocument?.versicherungsscheinAusgestellt">Versenden</button>
+<button (click)="selectedDocumentAusstellen()" [disabled]="!selectedDocument ||  selectedDocument?.typ == 1 && !selectedDocument?.versicherungsscheinAusgestellt">Versenden</button>
 <dokument-modal></dokument-modal>
 <table>
 
