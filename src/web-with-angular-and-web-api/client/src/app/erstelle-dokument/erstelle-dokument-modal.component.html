@@ -1,0 +1,40 @@
+<div class="modal">
+	<div class="modal-body" *ngIf="erstelleDokumentModalService.dokument">
+		<div class="container">
+<div class="input">
+	<span class="label">Berechnungsart</span>
+	<select [(ngModel)]="erstelleDokumentModalService.dokument.berechnungsart" class="value" placeholder="Berechnungsart" >
+		<option value="1">Umsatz</option>
+		<option value="2">Hauhaltssumme</option>
+		<option value="3">Anzahl Mitarbeiter</option>
+	</select>
+</div>
+<div class="input">
+	<span class="label">Risiko</span>
+	<select class="value"  placeholder="Risiko" >
+		<option value="1">Gering</option>
+		<option value="2">Mittel</option>
+	</select>
+</div>
+
+
+<div class="input">
+	<span class="label">Versicherungssumme</span>
+	<input type="checkbox" class="value"  placeholder="Versicherungssumme" />
+</div>
+
+<div class="input" *ngIf="erstelleDokumentModalService.dokument.berechnungsart == 1">
+	<span class="label">Hat Webshop</span>
+	<input type="checkbox" class="value" />
+</div>
+<div class="input">
+	<span class="label">Zusatzschutz Webshop</span>
+	<input type="checkbox" class="value" />
+</div>
+
+<button (click)="this.erstelleDokumentModalService.close(false)">Schließen</button>
+<button (click)=" this.erstelleDokumentModalService.close(true) ">Speichern</button>
+</div>
+</div>
+</div>
+<div class="modal-background"></div>

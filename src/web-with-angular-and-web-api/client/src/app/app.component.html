@@ -1,0 +1,28 @@
+<button (click)="openDocumentCreation()">Neu</button>
+<button (click)="selectedDocumentAnnehmen()" [disabled]="!selectedDocument || selectedDocument?.typ !=1">Annehmen</button>
+<button [disabled]="!selectedDocument ||  selectedDocument?.typ == 1 && !selectedDocument?.versicherungsscheinAusgestellt">Versenden</button>
+<dokument-modal></dokument-modal>
+<table>
+
+<tr>  <th>Typ</th><th>Berechnungsart</th><th>Berechnungsbasis</th><th>inkludiere Zusatzschutz</th><th>zusatzschutz Aufschlag</th><th>hat Webshop</th><th>Risiko</th><th>Beitrag</th><th>versicherungssumme</th>
+</tr>
+  <tr (click)="selectDocument(dokument)" *ngFor="let dokument of dokumente">
+   <ng-container [ngSwitch]="dokument.berechnungsart">
+    <td *ngSwitchCase="1">Umsatz</td>
+    <td *ngSwitchCase="2">Haushaltssumme</td>
+    <td *ngSwitchCase="3">Anzahl Mitarbeiter</td>
+   </ng-container>
+    
+    
+    <td>{{dokument.berechnungbasis}}</td>
+    <td>{{dokument.inkludiereZusatzschutz ? 'ja' : 'nein'}}</td>
+    <td>{{dokument.zusatzschutzAufschlag}}</td>
+    <td>{{dokument.hatWebshop ? 'ja' : 'nein'}}</td>
+    <ng-container [ngSwitch]="dokument.risiko">
+    <td *ngSwitchCase="1">Gering</td>
+    <td *ngSwitchCase="2">Mittel</td>
+    </ng-container>
+    <td>{{dokument.beitrag}}€</td>
+    <td>{{dokument.versicherungssumme}}€</td>
+  </tr>
+</table>
