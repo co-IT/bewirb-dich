@@ -10,8 +10,12 @@
 	</select>
 </div>
 <div class="input">
+	<span class="label">Berechnungsbasis</span>
+	<input [(ngModel)]="erstelleDokumentModalService.dokument.berechnungbasis" class="value"  placeholder="Berechnungsbasis" />
+</div>
+<div class="input">
 	<span class="label">Risiko</span>
-	<select class="value"  placeholder="Risiko" >
+	<select [(ngModel)]="erstelleDokumentModalService.dokument.risiko" class="value"  placeholder="Risiko" >
 		<option value="1">Gering</option>
 		<option value="2">Mittel</option>
 	</select>
@@ -20,12 +24,12 @@
 
 <div class="input">
 	<span class="label">Versicherungssumme</span>
-	<input type="checkbox" class="value"  placeholder="Versicherungssumme" />
+	<input [(ngModel)]="erstelleDokumentModalService.dokument.versicherungssumme" class="value"  placeholder="Versicherungssumme" />
 </div>
 
 <div class="input" *ngIf="erstelleDokumentModalService.dokument.berechnungsart == 1">
 	<span class="label">Hat Webshop</span>
-	<input type="checkbox" class="value" />
+	<input [(ngModel)]="erstelleDokumentModalService.dokument.hatWebshop" type="checkbox" class="value" />
 </div>
 <div class="input">
 	<span class="label">Zusatzschutz Webshop</span>
