@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { Dokument } from '../models/dokument';
+import { Dokument, Dokumententyp } from '../models/dokument';
 
 @Injectable({ providedIn: 'root' })
 export class ErstelleDokumentModalService {
@@ -27,7 +27,7 @@ export class ErstelleDokumentModalService {
 
   async close(save: boolean) {
       if(save) {
-          await this.httpClient.post(environment.baseurl + '/dokumente/erstellen', this.dokument).toPromise()
+          await this.httpClient.post(environment.baseurl + '/dokumente/erstellen', {...this.dokument, typ: Dokumententyp.ANGEBOT}).toPromise()
           this.saved.emit();
       }
       this.modal.close();
