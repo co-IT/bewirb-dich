@@ -27,7 +27,7 @@ export class ErstelleDokumentModalService {
 
   async close(save: boolean) {
       if(save) {
-          await this.httpClient.post(environment.baseurl + '/api/dokumente/erstellen', this.dokument).toPromise()
+          await this.httpClient.post(environment.baseurl + '/dokumente/erstellen', this.dokument).toPromise()
           this.saved.emit();
       }
       this.modal.close();
