@@ -6,21 +6,19 @@
 
 <tr>  <th>Typ</th><th>Berechnungsart</th><th>Berechnungsbasis</th><th>inkludiere Zusatzschutz</th><th>zusatzschutz Aufschlag</th><th>hat Webshop</th><th>Risiko</th><th>Beitrag</th><th>versicherungssumme</th>
 </tr>
-  <tr (click)="selectDocument(dokument)" *ngFor="let dokument of dokumente">
-   <ng-container [ngSwitch]="dokument.berechnungsart">
-    <td *ngSwitchCase="1">Umsatz</td>
-    <td *ngSwitchCase="2">Haushaltssumme</td>
-    <td *ngSwitchCase="3">Anzahl Mitarbeiter</td>
-   </ng-container>
-    
-    
-    <td>{{dokument.berechnungbasis}}</td>
+  <tr [class.selected]="selectedDocument && selectedDocument.id === dokument.id" (click)="selectDocument(dokument)" *ngFor="let dokument of dokumente">
+    <ng-container [ngSwitch]="dokument.berechnungsart">
+      <td *ngSwitchCase="1">Umsatz</td>
+      <td *ngSwitchCase="2">Haushaltssumme</td>
+      <td *ngSwitchCase="3">Anzahl Mitarbeiter</td>
+    </ng-container>
+    <td>{{dokument.berechnungbasis}} {{dokument.berechnungsart !== 3 ? '€' : ''}}</td>
     <td>{{dokument.inkludiereZusatzschutz ? 'ja' : 'nein'}}</td>
     <td>{{dokument.zusatzschutzAufschlag}}</td>
     <td>{{dokument.hatWebshop ? 'ja' : 'nein'}}</td>
     <ng-container [ngSwitch]="dokument.risiko">
-    <td *ngSwitchCase="1">Gering</td>
-    <td *ngSwitchCase="2">Mittel</td>
+      <td *ngSwitchCase="1">Gering</td>
+      <td *ngSwitchCase="2">Mittel</td>
     </ng-container>
     <td>{{dokument.beitrag}}€</td>
     <td>{{dokument.versicherungssumme}}€</td>
