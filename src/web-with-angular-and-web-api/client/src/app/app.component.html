@@ -4,7 +4,16 @@
 <dokument-modal></dokument-modal>
 <table>
 
-<tr>  <th>Typ</th><th>Berechnungsart</th><th>Berechnungsbasis</th><th>inkludiere Zusatzschutz</th><th>zusatzschutz Aufschlag</th><th>hat Webshop</th><th>Risiko</th><th>Beitrag</th><th>versicherungssumme</th>
+<tr>
+  <th>Typ</th>
+  <th>Berechnungsart</th>
+  <th>Berechnungsbasis</th>
+  <th>inkludiere Zusatzschutz</th>
+  <th>zusatzschutz Aufschlag</th>
+  <th>hat Webshop</th>
+  <th>Risiko</th>
+  <th>Beitrag</th>
+  <th>versicherungssumme</th>
 </tr>
   <tr [class.selected]="selectedDocument && selectedDocument.id === dokument.id" (click)="selectDocument(dokument)" *ngFor="let dokument of dokumente">
     <ng-container [ngSwitch]="dokument.berechnungsart">
