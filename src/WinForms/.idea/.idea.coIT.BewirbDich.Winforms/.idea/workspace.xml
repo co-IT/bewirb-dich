@@ -4,7 +4,9 @@
     <projectFile>coIT.BewirbDich.Winforms..UI/coIT.BewirbDich.Winforms.UI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e1d4d133-ddfe-4ad8-8342-a1482039ebde" name="Changes" comment="" />
+    <list default="true" id="e1d4d133-ddfe-4ad8-8342-a1482039ebde" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.coIT.BewirbDich.Winforms/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.coIT.BewirbDich.Winforms/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,9 +26,9 @@
   },
   "keyToStringList": {
     "rider.external.source.directories": [
-      "C:\\Users\\Uli.Armbruster\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\Uli.Armbruster\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\Uli.Armbruster\\AppData\\Local\\Symbols\\src"
+      "C:\\Users\\frank.strieter\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\frank.strieter\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\frank.strieter\\AppData\\Local\\Symbols\\src"
     ]
   }
 }]]></component>
@@ -60,12 +62,14 @@
       <updated>1673898755617</updated>
       <workItem from="1673898757796" duration="18000" />
       <workItem from="1673898797495" duration="343000" />
+      <workItem from="1674036378554" duration="1058000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
