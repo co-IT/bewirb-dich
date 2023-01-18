@@ -16,6 +16,10 @@
   <th>versicherungssumme</th>
 </tr>
   <tr [class.selected]="selectedDocument && selectedDocument.id === dokument.id" (click)="selectDocument(dokument)" *ngFor="let dokument of dokumente">
+    <ng-container [ngSwitch]="dokument.typ">
+      <td *ngSwitchCase="1">Angebot</td>
+      <td *ngSwitchCase="2">Versicherungsschein</td>
+    </ng-container>
     <ng-container [ngSwitch]="dokument.berechnungsart">
       <td *ngSwitchCase="1">Umsatz</td>
       <td *ngSwitchCase="2">Haushaltssumme</td>
