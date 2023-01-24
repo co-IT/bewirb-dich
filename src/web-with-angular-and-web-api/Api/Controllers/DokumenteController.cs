@@ -209,22 +209,22 @@ namespace Api.Controllers
             switch (dokument.Berechnungsart)
             {
                 case Berechnungsart.Umsatz:
-                    dokument.Berechnungbasis = (decimal) Math.Pow((double)dokument.Versicherungssumme, 0.25d);
-                    beitrag = 1.1m * dokument.Berechnungbasis;
+                    var faktorUmsatz  = (decimal) Math.Pow((double)dokument.Versicherungssumme, 0.25d);
+                    beitrag = 1.1m + faktorUmsatz * (dokument.Berechnungbasis / 100000);
                     if (dokument.HatWebshop) //Webshop gibt es nur bei Unternehmen, die nach Umsatz abgerechnet werden
                         beitrag *= 2;
                     break;
                 case Berechnungsart.Haushaltssumme:
-                    dokument.Berechnungbasis = (decimal)Math.Log10((double) dokument.Versicherungssumme);
-                    beitrag = 1.0m * dokument.Berechnungbasis + 100m;
+                    var faktorHaushaltssumme = (decimal)Math.Log10((double) dokument.Versicherungssumme);
+                    beitrag = 1.0m + faktorHaushaltssumme * dokument.Berechnungbasis + 100m;
                     break;
                 case Berechnungsart.AnzahlMitarbeiter:
-                    dokument.Berechnungbasis = dokument.Versicherungssumme / 1000;
+                    var faktorMitarbeiter = dokument.Versicherungssumme / 1000;
 
                     if (dokument.Berechnungbasis < 4)
-                        beitrag = dokument.Berechnungbasis * 250m;
+                        beitrag = faktorMitarbeiter +  dokument.Berechnungbasis * 250m;
                     else
-                        beitrag = dokument.Berechnungbasis * 200m;
+                        beitrag = faktorMitarbeiter + dokument.Berechnungbasis * 200m;
 
                     break;
                 default:
