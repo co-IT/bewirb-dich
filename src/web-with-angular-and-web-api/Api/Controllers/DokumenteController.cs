@@ -70,6 +70,8 @@ namespace Api.Controllers
             dokument.Typ = dto.Typ;
             dokument.Berechnungsart = dto.Berechnungsart;
             
+            Kalkuliere(dokument);
+            
             service.Add(dokument);
             service.Save();
 
@@ -110,6 +112,8 @@ namespace Api.Controllers
             dokument.ZusatzschutzAufschlag = updatedDokument.ZusatzschutzAufschlag;
             dokument.Typ = updatedDokument.Typ;
             dokument.Berechnungsart = updatedDokument.Berechnungsart;
+
+            Kalkuliere(dokument);
 
             service.Save();
 
@@ -177,7 +181,73 @@ namespace Api.Controllers
             service.Delete(dokument);
             service.Save();
         }
+        
+        private void Kalkuliere(Dokument dokument)
+        {
+            //Versicherungsnehmer, die nach Haushaltssumme versichert werden (primär Vereine) stellen immer ein mittleres Risiko da
+            if (dokument.Berechnungsart == Berechnungsart.Haushaltssumme)
+            {
+                dokument.Risiko = Risiko.Mittel;
+            }
+
+            //Versicherungsnehmer, die nach Anzahl Mitarbeiter abgerechnet werden und mehr als 5 Mitarbeiter haben, können kein Lösegeld absichern
+            if (dokument.Berechnungsart == Berechnungsart.AnzahlMitarbeiter)
+                if (dokument.Berechnungbasis > 5)
+                {
+                    dokument.InkludiereZusatzschutz = false;
+                    dokument.ZusatzschutzAufschlag = 0;
+                }
+
+            //Versicherungsnehmer, die nach Umsatz abgerechnet werden, mehr als 100.000€ ausweisen und Lösegeld versichern, haben immer mittleres Risiko
+            if (dokument.Berechnungsart == Berechnungsart.Umsatz)
+                if (dokument.Berechnungbasis > 100000m && dokument.InkludiereZusatzschutz)
+                {
+                    dokument.Risiko = Risiko.Mittel;
+                }
+
+            decimal beitrag;
+            switch (dokument.Berechnungsart)
+            {
+                case Berechnungsart.Umsatz:
+                    dokument.Berechnungbasis = (decimal) Math.Pow((double)dokument.Versicherungssumme, 0.25d);
+                    beitrag = 1.1m * dokument.Berechnungbasis;
+                    if (dokument.HatWebshop) //Webshop gibt es nur bei Unternehmen, die nach Umsatz abgerechnet werden
+                        beitrag *= 2;
+                    break;
+                case Berechnungsart.Haushaltssumme:
+                    dokument.Berechnungbasis = (decimal)Math.Log10((double) dokument.Versicherungssumme);
+                    beitrag = 1.0m * dokument.Berechnungbasis + 100m;
+                    break;
+                case Berechnungsart.AnzahlMitarbeiter:
+                    dokument.Berechnungbasis = dokument.Versicherungssumme / 1000;
+
+                    if (dokument.Berechnungbasis < 4)
+                        beitrag = dokument.Berechnungbasis * 250m;
+                    else
+                        beitrag = dokument.Berechnungbasis * 200m;
+
+                    break;
+                default:
+                    throw new Exception();
+            }
+
+            if (dokument.InkludiereZusatzschutz)
+                beitrag *= 1.0m + (decimal) dokument.ZusatzschutzAufschlag / 100.0m;
+
+            if (dokument.Risiko == Risiko.Mittel)
+            {
+                if (dokument.Berechnungsart is Berechnungsart.Haushaltssumme or Berechnungsart.Umsatz)
+                    beitrag *= 1.2m;
+                else
+                    beitrag *= 1.3m;
+            }
+
+            dokument.Berechnungbasis = Math.Round(dokument.Berechnungbasis, 2);
+            dokument.Beitrag = Math.Round(beitrag, 2);
+        }
     }
+    
+    
 
     public class UpdateDokumentDto
     {
