@@ -14,6 +14,7 @@ namespace Api.Controllers
             logger = new Logger<DokumenteController>(loggerFactory);
         }
         
+        [HttpGet]
         [Route("/Dokumente")]
         public ActionResult<IEnumerable<Dokument>> DokumenteAbrufen()
         {
@@ -24,6 +25,7 @@ namespace Api.Controllers
             return okResult;
         }
         
+        [HttpGet]
         [Route("/Dokumente/{id}")]
         public Dokument DokumentFinden([FromRoute] Guid id)
         {
