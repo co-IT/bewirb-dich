@@ -33,8 +33,8 @@
 	<input [(ngModel)]="erstelleDokumentModalService.dokument.hatWebshop" type="checkbox" class="value" />
 </div>
 <div class="input">
-	<span class="label">Zusatzschutz Webshop</span>
-	<input type="checkbox" class="value" />
+	<span class="label">Zusatzschutz</span>
+	<input [(ngModel)]="erstelleDokumentModalService.dokument.inkludiereZusatzschutz" type="checkbox" class="value" />
 </div>
 
 <button (click)="this.erstelleDokumentModalService.close(false)">Schließen</button>
