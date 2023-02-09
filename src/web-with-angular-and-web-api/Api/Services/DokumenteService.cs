@@ -1,12 +1,12 @@
 ﻿using System.Reflection;
 using System.Text;
+using System.Text.Json;
 using Api.Domain;
 using Api.Infrastructure;
-using Newtonsoft.Json;
 
 namespace Api.Services;
 
-public class DokumenteService:Repository
+public class DokumenteService : Repository
 {
     private static readonly string JSONPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "/dokumente.json";
     
@@ -32,11 +32,11 @@ public class DokumenteService:Repository
         if (!File.Exists(JSONPath))
         {
             var empty = Enumerable.Empty<Dokument>();
-            File.WriteAllText(JSONPath, JsonConvert.SerializeObject(empty), new UTF8Encoding());
+            File.WriteAllText(JSONPath, JsonSerializer.Serialize(empty), Encoding.UTF8);
         }
 
         var json = File.ReadAllText(JSONPath, Encoding.UTF8);
-        return JsonConvert.DeserializeObject<List<Dokument>>(json) ?? new List<Dokument>();
+        return JsonSerializer.Deserialize<List<Dokument>>(json) ?? new List<Dokument>();
     }
 
     public Dokument? Find(Guid id)
@@ -64,7 +64,7 @@ public class DokumenteService:Repository
 
     public void Save()
     {
-        var json = JsonConvert.SerializeObject(dokumente);
+        var json = JsonSerializer.Serialize(dokumente);
         File.WriteAllText(JSONPath, json, new UTF8Encoding());
     }
 
