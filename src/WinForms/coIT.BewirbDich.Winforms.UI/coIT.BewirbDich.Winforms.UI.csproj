@@ -10,7 +10,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\coIT.BewirbDich..Winforms.Infrastructure\coIT.BewirbDich.Winforms.Infrastructure.csproj" />
+      <ProjectReference Include="..\coIT.BewirbDich.Winforms.Infrastructure\coIT.BewirbDich.Winforms.Infrastructure.csproj" />
       <ProjectReference Include="..\coIT.BewirbDich.Winforms.Domain\coIT.BewirbDich.Winforms.Domain.csproj" />
     </ItemGroup>
 
