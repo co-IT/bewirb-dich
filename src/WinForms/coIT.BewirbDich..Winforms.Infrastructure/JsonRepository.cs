@@ -1,6 +1,6 @@
-﻿using System.Text;
+using System.Text;
+using System.Text.Json;
 using coIT.BewirbDich.Winforms.Domain;
-using Newtonsoft.Json;
 
 namespace coIT.BewirbDich.Winforms.Infrastructure;
 
@@ -20,11 +20,11 @@ public class JsonRepository : IRepository
         if (!File.Exists(_file))
         {
             var empty = Enumerable.Empty<Dokument>();
-            File.WriteAllText(_file, JsonConvert.SerializeObject(empty), new UTF8Encoding());
+            File.WriteAllText(_file, JsonSerializer.Serialize(empty), Encoding.UTF8);
         }
 
         var json = File.ReadAllText(_file, Encoding.UTF8);
-        _dokumente = JsonConvert.DeserializeObject<List<Dokument>>(json) ?? new List<Dokument>();
+        _dokumente = JsonSerializer.Deserialize<List<Dokument>>(json) ?? new List<Dokument>();
     }
 
     public Dokument? Find(Guid id)
@@ -44,7 +44,7 @@ public class JsonRepository : IRepository
 
     public void Save()
     {
-        var json = JsonConvert.SerializeObject(_dokumente);
+        var json = JsonSerializer.Serialize(_dokumente);
         File.WriteAllText(_file, json, new UTF8Encoding());
     }
 }
