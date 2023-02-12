@@ -71,7 +71,7 @@ public partial class Form1 : Form
             return;
 
         kalkulation.Typ = Dokumenttyp.Versicherungsschein;
-        
+
         OptionenAnzeigen(kalkulation);
         _kalkulationen.ResetBindings(false);
     }
@@ -83,7 +83,7 @@ public partial class Form1 : Form
             return;
 
         kalkulation.VersicherungsscheinAusgestellt = true;
-        
+
         OptionenAnzeigen(kalkulation);
 
         MessageBox.Show("Der Versicherungsschein wurde an den Versicherungsnehmer verschickt.", "Vorgang", MessageBoxButtons.OK, MessageBoxIcon.Information);
