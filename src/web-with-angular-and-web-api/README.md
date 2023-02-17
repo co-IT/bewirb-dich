@@ -17,8 +17,8 @@ cd Api
 dotnet restore
 dotnet run
 
-# API started unter http://localhost:5054
-# Open API Dokumentation ist erreichbar unter http://localhost:5054/swagger
+# API started unter https://localhost:7054
+# Open API Dokumentation ist erreichbar unter https://localhost:7054/swagger
 ```
 
 ### Angular
