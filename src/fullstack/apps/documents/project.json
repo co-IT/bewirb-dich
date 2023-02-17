@@ -9,7 +9,7 @@
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/documents",
+        "outputPath": "{workspaceRoot}/{projectRoot}/dist/apps/documents",
         "index": "apps/documents/src/index.html",
         "main": "apps/documents/src/main.ts",
         "polyfills": "apps/documents/src/polyfills.ts",
@@ -84,7 +84,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/documents"],
+      "outputs": ["{workspaceRoot}/{projectRoot}/coverage/apps/documents"],
       "options": {
         "jestConfig": "apps/documents/jest.config.ts",
         "passWithNoTests": true
