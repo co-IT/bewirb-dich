@@ -31,13 +31,13 @@ Wir sind der festen Überzeugung, dass wir Deine Fähigkeiten am besten einschä
 
 Wir sind nicht voreingenommen und bevorzugen keine der oben genannten Optionen, obwohl die meisten Bewerber den technischen Test zu Hause bevorzugen.
 
-In diesem Repository ist **Die Diamant-Kata** enthalten - unser standardmäßiger technischer Test für Ingenieurspositionen.
+In diesem Repository ist **Die Time-Frame-Kata** enthalten - unser standardmäßiger technischer Test für Ingenieurspositionen.
 
 Die Kata sollte nicht länger als 60 Minuten dauern - wir werden zwar nicht nachprüfen, aber bitte verbringe nicht mehr als ein oder zwei Stunden mit der Lösung dieses Problems. Wir glauben nicht an mühsame und langwierige technische Testverfahren und würden lieber ein Gespräch mit Dir über Deine Ansätze führen, wenn Du Schwierigkeiten hast, den Test abzuschließen.
 
 **Wir erwarten, dass Deine Lösung durch Tests unterstützt wird** - TDD und Unit-Tests sind das Herzstück unserer Entwicklungskultur bei NewDay, und wir suchen dringend Leute, die in der Lage sind, Tests zu schreiben, die leicht zu verstehen und zu warten sind.
 
-Die Diamant-Kata ist bekannt, mit vielen verschiedenen Lösungen, die gut dokumentiert sind - aber wir _wie Dein Coding-Stil_ aussieht und nicht nur, ob Du die Kata erfüllen kannst. Wir verstehen, dass wir in der realen Welt leben, und wir werden dich nicht dafür bestrafen, dass Du Lösungen recherchierst, aber wir würden auch empfehlen, Deine eigene Implementierung zu machen!
+Die Time-Frame-Kata ist bekannt, mit vielen verschiedenen Lösungen, die gut dokumentiert sind - aber wir möchten etwas über _Deinen Code-Stil_ lernen und nicht nur, ob Du die Kata erfüllen kannst. Wir verstehen, dass wir in der realen Welt leben, und wir werden dich nicht dafür bestrafen, dass Du Lösungen recherchierst, aber wir würden auch empfehlen, Deine eigene Implementierung zu machen!
 
 Viel Erfolg :heart:
 
