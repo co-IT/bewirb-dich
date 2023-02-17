@@ -1,15 +1,19 @@
+using Fullstack.DocumentsApi.Features.Documents;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddDbContext<DocumentDbContext>(options => options.UseInMemoryDatabase("FullStack"));
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+SeedInMemoryDatabase(app);
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -23,3 +27,14 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+void SeedInMemoryDatabase(IHost host)
+{
+  using var scope = host.Services.CreateScope();
+  using var context = scope.ServiceProvider.GetService<DocumentDbContext>();
+
+  if (context is null)
+    return;
+  
+  context.Database.EnsureCreated();
+}
