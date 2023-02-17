@@ -1,25 +1,52 @@
 # Bewirb dich
-Die passende Aufgabe zu diesem Repository erhältst du im Laufe des Bewerbungsprozesses. Mehr dazu und wie du dich bei uns bewirbst, findest du [hier](https://co-IT.eu/career).
 
-# Ziele
-Wir wollen dir als Bewerber eine für dich zugeschnittene Aufgabe geben. Dafür haben wir diese Projekte geschaffen: Egal, ob du erst mit C# oder Angular anfängst, ob du bisher nur für Desktop programmiert hast oder bestimmte Frameworks / Bibliotheken nicht kennst: Mit diesen Code Samples können wir dir auf jeden Fall eine passende Aufgabe übermitteln.
+Hallo! :wave:
 
-Gleichzeitig wollen wir für uns die Vergleichbarkeit von Kandidaten erhöhen, indem alle mit den gleichen Basics und der gleichen Problemdomäne arbeiten.
+Willkommen im Repository, das wir an Bewerber senden, die sich für technische Positionen bewerben.
+Dies ist ein öffentliches Repository, und wenn Sie es finden und an einer Zusammenarbeit mit uns interessiert sind, nehmen Sie bitte Kontakt auf - wir stellen so gut wie immer ein.
 
-Du kennst uns noch nicht? Dann schau dir dieses kurze Video an: [![Imagevideo co-IT.eu GmbH](https://lh3.googleusercontent.com/p/AF1QipPBchc9JesovqE4ew7mUvXwb3sj6g6yvAQa6NsW=s1360-w1360-h1020)](https://youtu.be/fpPjn58ONrI)
+Wenn Du auf dieses Repository stößt, eine Stelle suchst und glaubst, dass Du zu uns passt, melde dich bitte bei uns.
+Mehr dazu und wie Du dich bei uns bewirbst, findest du [hier](https://co-IT.eu/career).
 
-# Beispiele
-Solche Aufgaben könnten z.B. sein:
+## Du kennst uns noch nicht?
 
-- Baue ein ASP.NET WebAPI Backend für den WinForms-Desktop-Client
-- Setze ein SOLID-Refactoring der Geschäftslogik um
-- Stelle ein Angular-FrontEnd für die WebAPI zur Verfügung
+Im folgenden Video kannst du einen ersten Eindruck von uns gewinnen.
 
-# Rahmenbedingungen
-Diese nennen wir dir mit deiner individuellen Aufgabe. Meistens gibt es drei Geschmacksrichtungen:
+[![Imagevideo co-IT.eu GmbH](https://lh3.googleusercontent.com/p/AF1QipPBchc9JesovqE4ew7mUvXwb3sj6g6yvAQa6NsW=s1360-w1360-h1020)](https://youtu.be/fpPjn58ONrI)
 
-- Timeboxed: Wie gut sind deine Ergebnisse unter Zeitdruck.
-- Qualitätsorientiert: Arbeite so lange an der Aufgabe bis es deinen eigenen Qualitätsansprüchen genügt.
-- Zielorientiert: Setze einen Aspekt vollständig um.
+## Unser Interview-Prozess
 
-Im Video, welches du mit deiner Aufgabe erhältst, erfährst du mehr. Gegebenenfalls findest du weitere Informationen in den README-Dateien der einzelnen Unterordnern.
+1. Erstes Vorstellungsgespräch - einfaches Kennenlernen und Begrüßung.
+2. Technischer Test - zu Hause, in Deiner eigenen Zeit.
+3. Fachliche Prüfung - Diskussion und interaktive Codeüberprüfung/Demo des technischen Tests
+4. Entscheidung / Angebot
+
+## Die fachliche Prüfung
+
+Wir sind der festen Überzeugung, dass wir Deine Fähigkeiten am besten einschätzen können, wenn wir den von Ihnen geschriebenen Code sehen und wissen, ob wir gut zusammenarbeiten können. Da wir wissen, dass Menschen unterschiedliche zeitliche und persönliche Einschränkungen haben, bieten wir die folgenden Optionen für den technischen Test an:
+
+1. Ein technischer Test, den du mit nach Hause nimmst und in Deiner eigenen Zeit durchführen kannst. (Am häufigsten)
+2. Eine Präsentation, bei der Du einen bereits geschriebenen Code mitbringst, der Deiner Meinung nach interessant ist und Deine Fähigkeiten veranschaulicht. (Zweithäufigste Variante)
+3. Eine Pairing-Übung beim technischen Test mit einem unserer Ingenieure. (Am wenigsten häufig)
+
+Wir sind nicht voreingenommen und bevorzugen keine der oben genannten Optionen, obwohl die meisten Bewerber den technischen Test zu Hause bevorzugen.
+
+In diesem Repository ist **Die Diamant-Kata** enthalten - unser standardmäßiger technischer Test für Ingenieurspositionen.
+
+Die Kata sollte nicht länger als 60 Minuten dauern - wir werden zwar nicht nachprüfen, aber bitte verbringe nicht mehr als ein oder zwei Stunden mit der Lösung dieses Problems. Wir glauben nicht an mühsame und langwierige technische Testverfahren und würden lieber ein Gespräch mit Dir über Deine Ansätze führen, wenn Du Schwierigkeiten hast, den Test abzuschließen.
+
+**Wir erwarten, dass Deine Lösung durch Tests unterstützt wird** - TDD und Unit-Tests sind das Herzstück unserer Entwicklungskultur bei NewDay, und wir suchen dringend Leute, die in der Lage sind, Tests zu schreiben, die leicht zu verstehen und zu warten sind.
+
+Die Diamant-Kata ist bekannt, mit vielen verschiedenen Lösungen, die gut dokumentiert sind - aber wir _wie Dein Coding-Stil_ aussieht und nicht nur, ob Du die Kata erfüllen kannst. Wir verstehen, dass wir in der realen Welt leben, und wir werden dich nicht dafür bestrafen, dass Du Lösungen recherchierst, aber wir würden auch empfehlen, Deine eigene Implementierung zu machen!
+
+Viel Erfolg :heart:
+
+## Schicke uns Deine Arbeit
+
+Wir akzeptieren Testergebnisse in jeder Form!
+
+- Schicke uns einen Link zu deinem Fork auf GitHub
+- Schicke uns eine Zip-Datei oder ein Archiv
+- Schicke uns einen Link zu einem CodePen / einer interaktiven Sandbox
+
+Wir würden jedoch davon abraten, einen Pull-Request zu öffnen, da dies ein öffentliches Repository ist.
