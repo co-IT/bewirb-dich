@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { DocumentDto } from './dto/document-dto';
+import { DocumentDto } from './dto/document.dto';
 import { Document } from './models/document';
 
 @Injectable({ providedIn: 'root' })
 export class DocumentsService {
-  private baseUrl = 'https://localhost';
+  private baseUrl = 'https://localhost:7157/Documents';
   constructor(private httpClient: HttpClient) {}
 
   all(): Observable<Document[]> {
