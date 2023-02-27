@@ -8,7 +8,7 @@ public static class DocumentSeedGenerator
   {
     Randomizer.Seed = new Random(2023);
 
-    var faker = new Faker<Document>()
+    var faker = new Faker<Document>("de")
       .CustomInstantiator(f => new Document(f.Commerce.Ean13(), f.Date.PastOffset(3), f.Name.FullName(), f.PickRandom<DocumentType>()));
 
     return faker.Generate(count);
