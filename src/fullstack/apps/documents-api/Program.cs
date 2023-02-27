@@ -7,6 +7,15 @@ builder.Services.AddDbContext<DocumentDbContext>(options => options.UseInMemoryD
 
 builder.Services.AddControllers();
 
+builder.Services.AddCors(options =>
+{
+  options.AddDefaultPolicy(
+    policy =>
+    {
+      policy.WithOrigins("http://localhost:4200");
+    });
+});
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -22,6 +31,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseCors();
+
 app.UseAuthorization();
 
 app.MapControllers();
@@ -35,6 +46,6 @@ void SeedInMemoryDatabase(IHost host)
 
   if (context is null)
     return;
-  
+
   context.Database.EnsureCreated();
 }
