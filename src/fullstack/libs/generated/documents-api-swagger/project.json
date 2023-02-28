@@ -1,0 +1,19 @@
+{
+  "name": "documents-api-swagger",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "targets": {
+    "build": {
+      "executor": "nx:noop",
+      "outputs": ["libs/generated/documents-api-swagger"]
+    },
+    "codegen": {
+      "executor": "@nx-dotnet/core:openapi-codegen",
+      "options": {
+        "openapiJsonPath": "libs/generated/documents-api-swagger/swagger.json",
+        "outputProject": "generated-documents-api-types"
+      },
+      "dependsOn": ["^swagger"]
+    }
+  },
+  "implicitDependencies": ["documents-api"]
+}

@@ -1,0 +1,16 @@
+<h1>Dokumente</h1>
+
+<table *ngIf="documents$ | async as documents" class="table">
+  <tr>
+    <th>Nummer</th>
+    <th>Erstellt am</th>
+    <th>Ersteller</th>
+    <th>Typ</th>
+  </tr>
+  <tr *ngFor="let document of documents">
+    <td>{{ document.number }}</td>
+    <td>{{ document.createdAt | date : 'dd.MM.yyyy' }}</td>
+    <td>{{ document.author }}</td>
+    <td>{{ document.type }}</td>
+  </tr>
+</table>
