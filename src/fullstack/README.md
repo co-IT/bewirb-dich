@@ -28,19 +28,33 @@ npm ci
 
 ### .NET Web API starten
 
+> Den Source Code findest Du unter apps/documents-api.
+
 ```bash
 npx nx run documents-api:serve
 ## API erreichbar unter https://localhost:7157
 ```
 
-### Angular Client starten
+### .NET Web API testen
+
+> Den Source Code findest Du unter apps/documents-api-test.
+
+```bash
+npx nx run documents-api-test:test
+```
+
+### UI starten
+
+> Den Source Code findest Du unter apps/documents.
 
 ```bash
 npx nx run documents:serve
 ## Client erreichbar unter https://localhost:4200
 ```
 
-### E2E Tests Ausführen
+### UI Tests Ausführen
+
+> Den Source Code findest Du unter apps/documents-e2e.
 
 ```bash
 npx nx run documents-e2e:e2e --watch
