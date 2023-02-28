@@ -1,6 +1,69 @@
-
-
 # Fullstack
+
+## Bevor Du beginnst...
+
+Bitte stell sicher, dass auf deinem System die folgenden Plattformen installiert sind.
+
+- [.Net 7](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
+- [Node LTS](https://nodejs.org/)
+
+## Setup
+
+### Das Projekt herunterladen und die Pakete installieren
+
+Wir haben ein Repository, in dem wir alle Aufgaben für verschiedene Kandidaten
+sammeln.
+Für Dich haben wir eine Fullstack-Aufgabe.
+Diese haben wir mit [Nx](https://nx.dev) aufgesetzt, damit der Code für
+API und Client nahe beieinander liegen und sich komfortabel entwickeln lässt.
+
+Das Projekt kannst du wie folgt laden und installieren.
+Übrigens wird der Befehl `npm ci` auch die NuGet-Pakete installieren.
+
+```bash
+git clone https://github.com/co-IT/bewirb-dich.git
+cd bewirb-dich/src/fullstack
+npm ci
+```
+
+### .NET Web API starten
+
+```bash
+npx nx run documents-api:serve
+## API erreichbar unter https://localhost:7157
+```
+
+### Angular Client starten
+
+```bash
+npx nx run documents:serve
+## Client erreichbar unter https://localhost:4200
+```
+
+### E2E Tests Ausführen
+
+```bash
+npx nx run documents-e2e:e2e --watch
+## Öffnet Cypress App
+```
+
+## Troubleshooting
+
+Beim Start der Web API kann es passieren, dass sie mit einem Fehler abbricht,
+wenn die Developer Zertifikate noch nicht installiert wurden oder abgelaufen sind.
+
+Die Fehlermeldungen sehen wie folgt aus:
+
+![](./assets/trouble-shooting-1.png)
+![](./assets/trouble-shooting-2.png)
+
+Wie in den Bildern zu sehen werden in den Fehlermeldungen auch Commandos genannt,
+mit denen die Probleme behoben werden können
+
+```bash
+dotnet dev-certs https --clean
+dotnet dev-certs https --trust
+```
 
 This project was generated using [Nx](https://nx.dev).
 
@@ -86,11 +149,6 @@ Run `nx graph` to see a diagram of the dependencies of your projects.
 ## Further help
 
 Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
-
-
-
-
-
 
 ## ☁ Nx Cloud
 
