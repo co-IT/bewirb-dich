@@ -43,13 +43,15 @@ npx nx run documents-api:serve
 npx nx run documents-api-test:test
 ```
 
+Natürlich kannst du dieses Projekt auch direkt in Rider oder Visual Studio starten. 
+
 ### UI starten
 
 > Den Source Code findest Du unter apps/documents.
 
 ```bash
 npx nx run documents:serve
-## Client erreichbar unter https://localhost:4200
+## Client erreichbar unter http://localhost:4200
 ```
 
 ### UI Tests Ausführen
