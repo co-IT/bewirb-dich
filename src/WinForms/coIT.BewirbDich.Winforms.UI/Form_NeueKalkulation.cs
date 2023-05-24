@@ -60,7 +60,7 @@ namespace coIT.BewirbDich.Winforms.UI
 
             //Versicherungsnehmer, die nach Umsatz abgerechnet werden, mehr als 100.000€ ausweisen und Lösegeld versichern, haben immer mittleres Risiko
             if (dokument.Berechnungsart == Berechnungsart.Umsatz)
-                if (dokument.Berechnungbasis > 100000m && dokument.InkludiereZusatzschutz)
+                if (dokument.Versicherungssumme > 100000m && dokument.InkludiereZusatzschutz)
                 {
                     ctrl_Risiko.SelectedText = Enum.GetName(typeof(Risiko), Risiko.Mittel);
                     dokument.Risiko = Risiko.Mittel;
