@@ -1,4 +1,4 @@
-# Web | Angular & .NET Web API
+# FullstackAngularDotnet
 
 ## Voraussetzungen
 
@@ -8,25 +8,24 @@ Für den Start benötigst du folgendes Setup.
 - [Node LTS](https://nodejs.org) ist installiert
 - Eine IDE deiner Wahl (Visual Studio Code, Visual Studio, Rider, WebStorm)
 
-## Start
+Abhängigkeiten installieren: `npm install`.
 
-### Web API
+## Web API
 
-```bash
-cd Api
-dotnet restore
-dotnet run
+Die WebAPI liegt unter `apps/creepy-api`
 
-# API started unter https://localhost:7054
-# Open API Dokumentation ist erreichbar unter https://localhost:7054/swagger
-```
+Zum Starten: `npm run start:api` (Die API startet unter https://localhost:7054. Die Open API Dokumentation ist erreichbar unter https://localhost:7054/swagger)
 
-### Angular
+Zum Testen: `npm run test:api`
 
-```bash
-cd client
-npm ci
-npm start -- --open
+## Angular
 
-# Client startet unter http://localhost:4200
-```
+Der Client liegt unter `apps/creepy-client`
+
+Zum Starten: `npm run start:client` (Der Client startet unter http://localhost:4200)
+
+Zum Testen: `npm run test:client`
+
+Zum e2e Testen: `npm run e2e:client`
+
+

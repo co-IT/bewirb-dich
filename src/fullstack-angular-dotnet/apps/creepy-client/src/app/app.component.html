@@ -1,0 +1,25 @@
+<button (click)="openDocumentCreation()">Neu</button>
+<button (click)="selectedDocumentAnnehmen()" [disabled]="!selectedDocument || !selectedDocument.kannAngenommenWerden">Annehmen</button>
+<button (click)="selectedDocumentAusstellen()" [disabled]="!selectedDocument ||  !selectedDocument.kannAusgestelltWerden">Versenden</button>
+<dokument-modal></dokument-modal>
+<table>
+
+  <tr>
+    <th>Typ</th>
+    <th>Berechnungsart</th>
+    <th>Zusatzschutz</th>
+    <th>Webshop versichert</th>
+    <th>Risiko</th>
+    <th>Versicherungssumme</th>
+    <th>Beitrag</th>
+  </tr>
+  <tr [class.selected]="selectedDocument && selectedDocument.id === dokument.id" (click)="selectDocument(dokument)" *ngFor="let dokument of dokumente">
+    <td>{{dokument.dokumenttyp}}</td>
+    <td>{{dokument.berechnungsart}}</td>
+    <td>{{dokument.zusatzschutz}}</td>
+    <td>{{dokument.webshopVersichert ? 'ja' : 'nein'}}</td>
+    <td>{{dokument.risiko}}</td>
+    <td>{{dokument.versicherungssumme}} €</td>
+    <td>{{dokument.beitrag }} €</td>
+  </tr>
+</table>
