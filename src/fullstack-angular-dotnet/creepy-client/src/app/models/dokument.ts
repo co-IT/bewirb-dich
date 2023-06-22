@@ -1,38 +1,21 @@
-export interface Dokument {
+export interface DokumentenlisteEintragDto {
   id: string;
-	typ: Dokumententyp;
-	berechnungsart: Berechnungsart;
-	
-	// Berechnungsart Umsatz => Jahresumsatz in Euro,
-	// Berechnungsart Haushaltssumme => Haushaltssumme in Euro,
-	// Berechnungsart AnzahlMitarbeiter => Ganzzahl
-	
-  berechnungbasis: number;
-	inkludiereZusatzschutz: boolean;
-	zusatzschutzAufschlag: number
-	//Gibt es nur bei Unternehmen, die nach Umsatz abgerechnet werden
-	hatWebshop: boolean;
-	risiko: Risiko
-	beitrag: number;
-	versicherungsscheinAusgestellt: boolean;
-	versicherungssumme: number;
-
+  dokumenttyp: string;
+  berechnungsart: string;
+  zusatzschutz: string
+  webshopVersichert: boolean;
+  risiko: string;
+  versicherungssumme: number;
+  beitrag: number;
+  kannAngenommenWerden: boolean;
+  kannAusgestelltWerden: boolean;
 }
 
-export enum Dokumententyp {
-	VERSICHERUNGSSCHEIN = 2,
-	ANGEBOT = 1,
-}
-
-export enum Berechnungsart
-{
-    Umsatz = 1,
-    Haushaltssumme = 2,
-    AnzahlMitarbeiter = 3
-}
-
-export enum Risiko
-{
-    Gering = 1,
-    Mittel = 2
+export interface ErzeugeNeuesAngebotDto {
+  berechnungsart: string;
+  willZusatzschutz: boolean;
+  zusatzschutzAufschlag: string;
+  hatWebshop: boolean;
+  risiko: string;
+  versicherungssumme: number;
 }

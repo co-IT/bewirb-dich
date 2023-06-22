@@ -1,15 +1,13 @@
 import { Component,  ElementRef, OnInit, OnDestroy } from '@angular/core';
 import { ErstelleDokumentModalService } from './erstelle-dokument-modal.service';
 
-
-
-@Component({ 
-    selector: 'dokument-modal', 
-    templateUrl: 'erstelle-dokument-modal.component.html', 
+@Component({
+    selector: 'dokument-modal',
+    templateUrl: 'erstelle-dokument-modal.component.html',
     styleUrls: ['erstelle-dokument-modal.component.scss'],
 })
 export class ErstelleDokumentModal implements OnInit, OnDestroy {
-    
+
     private element: any;
 
     constructor(public erstelleDokumentModalService: ErstelleDokumentModalService, private el: ElementRef) {

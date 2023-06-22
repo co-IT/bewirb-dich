@@ -67,9 +67,4 @@ public class DokumenteService : Repository
         var json = JsonSerializer.Serialize(dokumente);
         File.WriteAllText(JSONPath, json, new UTF8Encoding());
     }
-
-    public void Delete(Dokument dokument)
-    {
-        dokumente.Remove(dokument);
-    }
 }   

@@ -5,36 +5,33 @@
 <div class="input">
 	<span class="label">Berechnungsart</span>
 	<select [(ngModel)]="erstelleDokumentModalService.dokument.berechnungsart" class="value" placeholder="Berechnungsart" >
-		<option value="1">Umsatz</option>
-		<option value="2">Hauhaltssumme</option>
-		<option value="3">Anzahl Mitarbeiter</option>
+		<option value="Umsatz">Umsatz</option>
+		<option value="Haushaltssumme">Hauhaltssumme</option>
+		<option value="AnzahlMitarbeiter">Anzahl Mitarbeiter</option>
 	</select>
-</div>
-<div class="input">
-	<span class="label">Berechnungsbasis</span>
-	<input [(ngModel)]="erstelleDokumentModalService.dokument.berechnungbasis" class="value"  placeholder="Berechnungsbasis" />
 </div>
 <div class="input">
 	<span class="label">Risiko</span>
 	<select [(ngModel)]="erstelleDokumentModalService.dokument.risiko" class="value"  placeholder="Risiko" >
-		<option value="1">Gering</option>
-		<option value="2">Mittel</option>
+		<option value="Gering">Gering</option>
+		<option value="Mittel">Mittel</option>
 	</select>
 </div>
-
-
 <div class="input">
 	<span class="label">Versicherungssumme</span>
 	<input [(ngModel)]="erstelleDokumentModalService.dokument.versicherungssumme" class="value"  placeholder="Versicherungssumme" />
 </div>
-
-<div class="input" *ngIf="erstelleDokumentModalService.dokument.berechnungsart == 1">
+<div class="input">
 	<span class="label">Hat Webshop</span>
 	<input [(ngModel)]="erstelleDokumentModalService.dokument.hatWebshop" type="checkbox" class="value" />
 </div>
 <div class="input">
-	<span class="label">Zusatzschutz</span>
-	<input [(ngModel)]="erstelleDokumentModalService.dokument.inkludiereZusatzschutz" type="checkbox" class="value" />
+	<span class="label">Will Zusatzschutz</span>
+	<input [(ngModel)]="erstelleDokumentModalService.dokument.willZusatzschutz" type="checkbox" class="value" />
+</div>
+<div class="input" *ngIf="erstelleDokumentModalService.dokument.willZusatzschutz">
+  <span class="label">Zusatzschutz Aufschlag</span>
+  <input [(ngModel)]="erstelleDokumentModalService.dokument.zusatzschutzAufschlag" type="text" class="value" placeholder="10%"/>
 </div>
 
 <button (click)="this.erstelleDokumentModalService.close(false)">Schließen</button>

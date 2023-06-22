@@ -1,16 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { Dokument, Dokumententyp } from '../models/dokument';
+import { ErzeugeNeuesAngebotDto} from '../models/dokument';
 
 @Injectable({ providedIn: 'root' })
 export class ErstelleDokumentModalService {
     private modal: any;
-    public dokument: Dokument | undefined | any
+    public dokument: ErzeugeNeuesAngebotDto | undefined | any;
     public saved = new EventEmitter<void>()
 
     constructor(private httpClient: HttpClient) {
-        
+
     }
 
   set(modal: any) {
@@ -27,7 +27,7 @@ export class ErstelleDokumentModalService {
 
   async close(save: boolean) {
       if(save) {
-          await this.httpClient.post(environment.baseurl + '/dokumente/erstellen', {...this.dokument, typ: Dokumententyp.ANGEBOT}).toPromise()
+          await this.httpClient.post(environment.baseurl + '/dokumente', {...this.dokument}).toPromise()
           this.saved.emit();
       }
       this.modal.close();

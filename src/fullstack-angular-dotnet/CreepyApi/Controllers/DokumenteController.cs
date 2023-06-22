@@ -16,18 +16,35 @@ namespace Api.Controllers
         
         [HttpGet]
         [Route("/Dokumente")]
-        public ActionResult<IEnumerable<Dokument>> DokumenteAbrufen()
+        public ActionResult<IEnumerable<DokumentenlisteEintragDto>> DokumenteAbrufen()
         {
             var service = DokumenteService.Instance;
 
-            var okResult = new OkObjectResult(service.List());
+            var okResult = new OkObjectResult(service.List().Select(dokument => MapToDto(dokument)));
             
             return okResult;
         }
-        
+
+        private DokumentenlisteEintragDto MapToDto(Dokument dokument)
+        {
+            return new DokumentenlisteEintragDto()
+            {
+                Id = dokument.Id,
+                Beitrag = dokument.Beitrag,
+                Berechnungsart = Enum.GetName(typeof(Berechnungsart), dokument.Berechnungsart)!,
+                Dokumenttyp = Enum.GetName(typeof(Dokumenttyp), dokument.Typ),
+                Risiko = Enum.GetName(typeof(Risiko), dokument.Risiko)!,
+                Versicherungssumme = dokument.Versicherungssumme,
+                Zusatzschutz = $"{dokument.ZusatzschutzAufschlag}%",
+                WebshopVersichert = dokument.HatWebshop,
+                KannAngenommenWerden = !dokument.VersicherungsscheinAusgestellt && dokument.Typ == Dokumenttyp.Angebot,
+                KannAusgestelltWerden = !dokument.VersicherungsscheinAusgestellt && dokument.Typ == Dokumenttyp.Versicherungsschein
+            };
+        }
+
         [HttpGet]
         [Route("/Dokumente/{id}")]
-        public Dokument DokumentFinden([FromRoute] Guid id)
+        public DokumentenlisteEintragDto DokumentFinden([FromRoute] Guid id)
         {
             var dokument = DokumenteService.Instance.Find(id);
 
@@ -38,13 +55,13 @@ namespace Api.Controllers
             }
             else
             {
-                return dokument;
+                return MapToDto(dokument);
             }
         }
         
         [HttpPost]
-        [Route("/Dokumente/Erstellen")]
-        public ActionResult DokumenteErstellen([FromBody] CreateDokumentDto dto)
+        [Route("/Dokumente")]
+        public ActionResult DokumenteErstellen([FromBody] ErzeugeNeuesAngebotDto dto)
         {
             var service = DokumenteService.Instance;
 
@@ -53,73 +70,34 @@ namespace Api.Controllers
                 throw new ArgumentOutOfRangeException("Die Versicherungssumme darf nicht negativ sein.");
             }
 
-            if (dto.ZusatzschutzAufschlag < 0)
+            if (string.IsNullOrWhiteSpace(dto.ZusatzschutzAufschlag))
+            {
+                dto.ZusatzschutzAufschlag = "0%";
+            }
+
+            if (dto.ZusatzschutzAufschlag.StartsWith("-"))
             {
                 throw new ArgumentOutOfRangeException("Der Zusatzschutzaufschlag darf nicht negativ sein.");
             }
 
             var dokument = Dokument.Create();
-            dokument.InkludiereZusatzschutz = dto.InkludiereZusatzschutz;
+            dokument.InkludiereZusatzschutz = dto.WillZusatzschutz;
             dokument.HatWebshop = dto.HatWebshop;
-            dokument.VersicherungsscheinAusgestellt = dto.VersicherungsscheinAusgestellt;
-            dokument.Risiko = dto.Risiko;
-            dokument.Berechnungbasis = dto.Berechnungbasis;
-            dokument.Beitrag = dto.Beitrag;
+            dokument.VersicherungsscheinAusgestellt = false;
+            dokument.Risiko = RisikoHelper.Parse(dto.Risiko);
             dokument.Versicherungssumme = dto.Versicherungssumme;
-            dokument.ZusatzschutzAufschlag = dto.ZusatzschutzAufschlag;
-            dokument.Typ = dto.Typ;
-            dokument.Berechnungsart = dto.Berechnungsart;
+            dokument.ZusatzschutzAufschlag = float.Parse(dto.ZusatzschutzAufschlag.Replace("%", ""));
+            dokument.Typ = Dokumenttyp.Angebot;
+            dokument.Berechnungsart = BerechnungsartHelper.Parse(dto.Berechnungsart);
             
             Kalkuliere(dokument);
             
             service.Add(dokument);
             service.Save();
 
-            return CreatedAtAction("DokumentFinden", "Dokumente", new { Id = dokument.Id }, dokument);
+            return Ok();
         }
-        
-        [HttpPatch]
-        [Route("/Dokumente/{id}")]
-        public ActionResult DokumenteAktualisieren([FromRoute] Guid id, [FromBody] UpdateDokumentDto updatedDokument)
-        {
-            var service = DokumenteService.Instance;
 
-            if (updatedDokument.Versicherungssumme < 0)
-            {
-                throw new ArgumentOutOfRangeException("Die Versicherungssumme darf nicht negativ sein.");
-            }
-
-            if (updatedDokument.ZusatzschutzAufschlag < 0)
-            {
-                throw new ArgumentOutOfRangeException("Der Zusatzschutzaufschlag darf nicht negativ sein.");
-            }
-
-            var dokument = service.Find(id);
-
-            if (dokument == null)
-            {
-                logger.LogError("Das Dokument mit der ID " + id + " konnte nicht gefunden werden.");
-                throw new ArgumentException("Das Dokument mit der Id " + id + " konnte nicht gefunden werden.");
-            }
-
-            dokument.InkludiereZusatzschutz = updatedDokument.InkludiereZusatzschutz;
-            dokument.HatWebshop = updatedDokument.HatWebshop;
-            dokument.VersicherungsscheinAusgestellt = updatedDokument.VersicherungsscheinAusgestellt;
-            dokument.Risiko = updatedDokument.Risiko;
-            dokument.Berechnungbasis = updatedDokument.Berechnungbasis;
-            dokument.Beitrag = updatedDokument.Beitrag;
-            dokument.Versicherungssumme = updatedDokument.Versicherungssumme;
-            dokument.ZusatzschutzAufschlag = updatedDokument.ZusatzschutzAufschlag;
-            dokument.Typ = updatedDokument.Typ;
-            dokument.Berechnungsart = updatedDokument.Berechnungsart;
-
-            Kalkuliere(dokument);
-
-            service.Save();
-
-            return new AcceptedResult();
-        }
-        
         [HttpPost]
         [Route("/Dokumente/{id}/annehmen")]
         public ActionResult DokumentAnnehmen([FromRoute] Guid id)
@@ -163,25 +141,7 @@ namespace Api.Controllers
 
             return new AcceptedResult();
         }
-        
-        [HttpDelete]
-        [Route("/Dokumente/{id}")]
-        public void DokumentEntfernen([FromRoute] Guid id)
-        {
-            var service = DokumenteService.Instance;
-                
-            var dokument = service.Find(id);
 
-            if (dokument == null)
-            {
-                logger.LogError("Das Dokument mit der ID " + id + " konnte nicht gefunden werden.");
-                throw new ArgumentNullException("Das Dokument mit der ID " + id + " konnte nicht gefunden werden.");
-            }
-            
-            service.Delete(dokument);
-            service.Save();
-        }
-        
         private void Kalkuliere(Dokument dokument)
         {
             //Versicherungsnehmer, die nach Haushaltssumme versichert werden (primär Vereine) stellen immer ein mittleres Risiko da
@@ -246,34 +206,28 @@ namespace Api.Controllers
             dokument.Beitrag = Math.Round(beitrag, 2);
         }
     }
-    
-    
+}
 
-    public class UpdateDokumentDto
-    {
-        public Dokumenttyp Typ { get; set; }
-        public Berechnungsart Berechnungsart { get; set; }
-        public decimal Berechnungbasis { get; set; }
-        public bool InkludiereZusatzschutz { get; set; }
-        public float ZusatzschutzAufschlag { get; set; }
-        public bool HatWebshop { get; set; }
-        public Risiko Risiko { get; set; }
-        public decimal Beitrag { get; set; }
-        public bool VersicherungsscheinAusgestellt { get; set; }
-        public decimal Versicherungssumme { get; set; }
-    }
-
-    public class CreateDokumentDto
-    {
-        public Dokumenttyp Typ { get; set; }
-        public Berechnungsart Berechnungsart { get; set; }
-        public decimal Berechnungbasis { get; set; }
-        public bool InkludiereZusatzschutz { get; set; }
-        public float ZusatzschutzAufschlag { get; set; }
-        public bool HatWebshop { get; set; }
-        public Risiko Risiko { get; set; }
-        public decimal Beitrag { get; set; }
-        public bool VersicherungsscheinAusgestellt { get; set; }
-        public decimal Versicherungssumme { get; set; }
-    }
+public class ErzeugeNeuesAngebotDto
+{
+    public bool HatWebshop { get; init; }
+    public string Berechnungsart { get; init; }
+    public string Risiko { get; init; }
+    public bool WillZusatzschutz { get; init; }
+    public string ZusatzschutzAufschlag { get; set; }
+    public decimal Versicherungssumme { get; init; }
+}
+    
+public class DokumentenlisteEintragDto
+{
+    public Guid Id { get; init; }
+    public string Dokumenttyp { get; init; }
+    public string Berechnungsart { get; init; }
+    public string Risiko { get; init; }
+    public string Zusatzschutz { get; init; }
+    public bool WebshopVersichert { get; init; }
+    public decimal Versicherungssumme { get; init; }
+    public decimal Beitrag { get; init; }
+    public bool KannAngenommenWerden { get; init; }
+    public bool KannAusgestelltWerden { get; init; } 
 }
