@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "apps", "apps", "{1897BA96-353B-4B5D-B379-684D41FB9121}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreepyApi", "apps\creepy-api\CreepyApi.csproj", "{9B1BAA02-26B8-40F6-8E32-FD6F8C217ED6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreepyApi.Test", "apps\creepy-api-test\CreepyApi.Test.csproj", "{C284A466-434A-4511-9E54-B521F5342801}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9B1BAA02-26B8-40F6-8E32-FD6F8C217ED6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B1BAA02-26B8-40F6-8E32-FD6F8C217ED6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B1BAA02-26B8-40F6-8E32-FD6F8C217ED6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B1BAA02-26B8-40F6-8E32-FD6F8C217ED6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C284A466-434A-4511-9E54-B521F5342801}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C284A466-434A-4511-9E54-B521F5342801}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C284A466-434A-4511-9E54-B521F5342801}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C284A466-434A-4511-9E54-B521F5342801}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9B1BAA02-26B8-40F6-8E32-FD6F8C217ED6} = {1897BA96-353B-4B5D-B379-684D41FB9121}
+		{C284A466-434A-4511-9E54-B521F5342801} = {1897BA96-353B-4B5D-B379-684D41FB9121}
+	EndGlobalSection
+EndGlobal
