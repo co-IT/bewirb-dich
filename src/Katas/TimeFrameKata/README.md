@@ -4,6 +4,8 @@ Ein Arbeitgeber hat auf Hybrid-Office umgestellt und seine Bürofläche reduzier
 
 Schreibe eine entsprechende Anwendung in einer Technologie deiner Wahl.
 
+![Reservierungen](https://github.com/co-IT/bewirb-dich/blob/main/src/Katas/TimeFrameKata/assets/overview.png)
+
 ## Hinweise
 - Versuche iterativ vorzugehen, indem du dir noch keine Gedanken um Edge Cases, Oberfläche, Persistenz und Co. machst
 - Ignoriere Problemfelder wie Sommer-/Winterzeit oder Zeitzonen
