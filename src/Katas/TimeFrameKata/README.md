@@ -39,7 +39,7 @@ Schreibe eine entsprechende Anwendung in einer Technologie deiner Wahl.
 ### Iteration 3
 - Ziel: Der/Die Anwender:in soll sich einen Überblick über alle existierenden Reservierungen verschaffen können
   - Wenn es keine Reservierungen gibt, wird nichts angezeigt
-  - Die Ausgabe sortiert zunächst absteigend gruppiert nach Tag ausgegeben
+  - Die Ausgabe sortiert zunächst absteigend und wird gruppiert nach Tag ausgegeben
   - Innerhalb des Tages werden die einzelnen Zeitabschnitte früh nach spät sortiert ausgegeben
 
 ### Iteration 4
